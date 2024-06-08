@@ -11,3 +11,22 @@ mybatis:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     #开启mybatis的驼峰命名自动映射开关
     map-underscore-to-camel-case: true
+
+knife4j:
+  enable: true
+  openapi:
+    title: tlias接口文档
+    description: TLIAS智能学习辅助系统
+    email: 2894702202@qq.com
+    concat: XZY
+    url: https://xzynet.com.cn/
+    version: v1.0
+    license: Apache 2.0
+    license-url: https://xzynet.com.cn/
+    terms-of-service-url: https://xzynet.com.cn/
+    group:
+      test1:
+        group-name: 分组名称
+        api-rule: package
+        api-rule-resources:
+          - com.itheima.controller

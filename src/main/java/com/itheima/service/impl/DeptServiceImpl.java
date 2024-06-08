@@ -15,11 +15,11 @@ public class DeptServiceImpl implements DeptService {
 
     /**
      * 部门列表查询
+     *
      * @return
      */
     @Override
     public List<Dept> list() {
-        List<Dept> deptList = deptMapper.list();
-        return deptList;
+        return deptMapper.list();
     }
 }
