@@ -30,6 +30,13 @@
             <version>2.2.2</version>
         </dependency>
 
+        <!--pagehelper-->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.4.2</version>
+        </dependency>
+
         <!--knif4j-->
         <!--<dependency>
             <groupId>com.github.xiaoymin</groupId>

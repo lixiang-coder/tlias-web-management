@@ -5,6 +5,7 @@ spring:
     username: root
     password: 123456
 
+# mybatis 相关配置
 mybatis:
   configuration:
     #配置mybatis的日志, 指定输出到控制台
