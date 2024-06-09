@@ -4,6 +4,13 @@ spring:
     url: jdbc:mysql://localhost:3306/tlias
     username: root
     password: 123456
+    # 在SpringBoot中，文件上传时默认单个文件最大大小为1M
+  servlet:
+    multipart:
+      #配置单个请求最大上传大小(一次请求可以上传多个文件)
+      max-request-size: 100MB
+      #配置单个文件最大上传大小
+      max-file-size: 10MB
 
 # mybatis 相关配置
 mybatis:
