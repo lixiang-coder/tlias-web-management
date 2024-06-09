@@ -20,4 +20,12 @@
         </where>
         order by update_time desc
     </select>
+
+    <!--批量删除员工-->
+    <delete id="delete">
+        delete from tlias.emp where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
 </mapper>

@@ -56,4 +56,14 @@ public class EmpServiceImpl implements EmpService {
         PageBean pageBean = new PageBean(p.getTotal(), p.getResult());
         return pageBean;
     }
+
+    /**
+     * 批量删除员工
+     *
+     * @param ids
+     */
+    @Override
+    public void delete(List<Integer> ids) {
+        empMapper.delete(ids);
+    }
 }

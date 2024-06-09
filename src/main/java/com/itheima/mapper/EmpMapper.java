@@ -25,4 +25,11 @@ public interface EmpMapper {
     // 大坑：最好不要在mapper接口中使用方法重载
     //@Select("select * from tlias.emp")
     List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);
+
+    /**
+     * 批量删除员工
+     *
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }

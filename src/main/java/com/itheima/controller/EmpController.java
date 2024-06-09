@@ -6,14 +6,13 @@ import com.itheima.service.EmpService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Delete;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * 员工管理Controller
@@ -48,11 +47,26 @@ public class EmpController {
         */
 
         //记录日志
-        log.info("分页查询，参数：{},{},{},{},{},{}", page, pageSize,name, gender, begin, end);
+        log.info("分页查询，参数：{},{},{},{},{},{}", page, pageSize, name, gender, begin, end);
         //调用业务层分页查询功能
         PageBean pageBean = empService.page(page, pageSize, name, gender, begin, end);
         //响应
         return Result.success(pageBean);
+    }
+
+
+    /**
+     * 批量删除员工
+     *
+     * @param ids
+     * @return
+     */
+    @DeleteMapping("/{ids}")
+    @ApiOperation("批量删除员工")
+    public Result delete(@PathVariable List<Integer> ids) {
+        log.info("批量删除员工，参数为：{}", ids);
+        empService.delete(ids);
+        return Result.success();
     }
 
 }
