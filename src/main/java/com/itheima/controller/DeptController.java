@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @Slf4j
 @Api(tags = "部门管理相关接口")
+@RequestMapping("/depts")
 public class DeptController {
 
     @Resource
@@ -28,7 +29,7 @@ public class DeptController {
      * @return
      */
     @ApiOperation("部门列表查询")
-    @GetMapping("/depts")
+    @GetMapping
     public Result list() {
         log.info("查询所有部门信息");
         List<Dept> deptList = deptService.list();
@@ -43,7 +44,7 @@ public class DeptController {
      * @return
      */
     @ApiOperation("根据id删除部门")
-    @DeleteMapping("/depts/{id}")
+    @DeleteMapping("/{id}")
     public Result deleteById(@PathVariable Integer id) {
         log.info("根据id删除部门");
         int count = deptService.deleteById(id);
@@ -60,7 +61,7 @@ public class DeptController {
      * @return
      */
     @ApiOperation("新增部门")
-    @PostMapping("/depts")
+    @PostMapping
     public Result add(@RequestBody Dept dept) {
         log.info("新增部门");
         try {
@@ -68,6 +69,34 @@ public class DeptController {
         } catch (Exception e) {
             return Result.error("新增失败");
         }
+        return Result.success();
+    }
+
+    /**
+     * 根据id获取部门信息
+     *
+     * @param id
+     * @return
+     */
+    @ApiOperation("根据id获取部门信息")
+    @GetMapping("/{id}")
+    public Result getByID(@PathVariable Integer id) {
+        log.info("获取部门ID:{}", id);
+        Dept dept = deptService.getByID(id);
+        return Result.success(dept);
+    }
+
+    /**
+     * 修改部门信息
+     *
+     * @param dept
+     * @return
+     */
+    @ApiOperation("修改部门信息")
+    @PutMapping
+    public Result update(@RequestBody Dept dept) {
+        log.info("修改部门:{}", dept);
+        deptService.update(dept);
         return Result.success();
     }
 }

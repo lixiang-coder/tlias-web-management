@@ -1,10 +1,7 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Dept;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -25,4 +22,12 @@ public interface DeptMapper {
     // 新增部门
     @Insert("insert into tlias.dept (name, create_time, update_time) values (#{name},#{createTime},#{updateTime})")
     void add(Dept dept);
+
+    // 根据id获取部门信息
+    @Select("select * from tlias.dept where id = #{id}")
+    Dept getId(Integer id);
+
+    // 修改部门信息
+    @Update("update tlias.dept set name = #{name},update_time = #{updateTime} where id = #{id}")
+    void updata(Dept dept);
 }
