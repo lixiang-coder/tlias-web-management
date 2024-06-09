@@ -1,6 +1,7 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Dept;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -15,4 +16,8 @@ public interface DeptMapper {
     // 查询所有部门的信息
     @Select("select * from tlias.dept")
     List<Dept> list();
+
+    // 根据id删除部门
+    @Delete("delete from tlias.dept where id = #{id}")
+    int deleteById(Integer id);
 }

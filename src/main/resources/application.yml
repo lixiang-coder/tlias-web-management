@@ -12,6 +12,7 @@ mybatis:
     #开启mybatis的驼峰命名自动映射开关
     map-underscore-to-camel-case: true
 
+# knife4j配置信息
 knife4j:
   enable: true
   openapi:
