@@ -6,10 +6,7 @@ import com.itheima.service.DeptService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -54,5 +51,23 @@ public class DeptController {
             return Result.success();
         }
         return Result.error("删除失败");
+    }
+
+    /**
+     * 新增部门
+     *
+     * @param dept
+     * @return
+     */
+    @ApiOperation("新增部门")
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept) {
+        log.info("新增部门");
+        try {
+            deptService.add(dept);
+        } catch (Exception e) {
+            return Result.error("新增失败");
+        }
+        return Result.success();
     }
 }
