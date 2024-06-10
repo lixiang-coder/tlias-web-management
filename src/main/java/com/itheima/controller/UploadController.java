@@ -1,6 +1,6 @@
 package com.itheima.controller;
 
-import com.itheima.config.AliOSSUtils;
+import com.itheima.utils.AliOSSUtils;
 import com.itheima.pojo.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 @Slf4j
 @RestController

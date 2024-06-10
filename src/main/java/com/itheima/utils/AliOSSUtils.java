@@ -1,4 +1,4 @@
-package com.itheima.config;
+package com.itheima.utils;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
