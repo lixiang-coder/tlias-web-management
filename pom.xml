@@ -30,6 +30,12 @@
             <version>2.2.2</version>
         </dependency>
 
+        <!--ConfigurationProperties依赖，可以使yml文件有提示-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
         <!--阿里云oss-->
         <dependency>
             <groupId>com.aliyun.oss</groupId>
