@@ -16,4 +16,6 @@ public interface EmpService {
     void delete(List<Integer> ids);
 
     void save(Emp emp);
+
+    Emp getById(Integer id);
 }

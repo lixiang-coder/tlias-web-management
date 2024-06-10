@@ -77,10 +77,26 @@ public class EmpController {
      * @return
      */
     @PostMapping
+    @ApiOperation("新增员工")
     public Result save(@RequestBody Emp emp) {
         log.info("新增员工, emp:{}", emp);
         empService.save(emp);
         return Result.success();
+    }
+
+
+    /**
+     * 根据id查询员工
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    @ApiOperation("根据id查询员工")
+    public Result getById(@PathVariable Integer id) {
+        log.info("根据id查询员工，id：{}",id);
+        Emp emp = empService.getById(id);
+        return Result.success(emp);
     }
 
 }
