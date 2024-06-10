@@ -94,4 +94,17 @@ public class EmpServiceImpl implements EmpService {
         Emp emp = empMapper.getById(id);
         return emp;
     }
+
+    /**
+     * 修改员工信息
+     *
+     * @param emp
+     * @return
+     */
+    @Override
+    public void update(Emp emp) {
+        //补全数据
+        emp.setUpdateTime(LocalDateTime.now());
+        empMapper.update(emp);
+    }
 }

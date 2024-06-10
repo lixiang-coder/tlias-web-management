@@ -94,9 +94,23 @@ public class EmpController {
     @GetMapping("/{id}")
     @ApiOperation("根据id查询员工")
     public Result getById(@PathVariable Integer id) {
-        log.info("根据id查询员工，id：{}",id);
+        log.info("根据id查询员工，id：{}", id);
         Emp emp = empService.getById(id);
         return Result.success(emp);
+    }
+
+    /**
+     * 修改员工信息
+     *
+     * @param emp
+     * @return
+     */
+    @PutMapping
+    @ApiOperation("修改员工信息")
+    public Result update(@RequestBody Emp emp) {
+        log.info("修改员工信息, emp：{}", emp);
+        empService.update(emp);
+        return Result.success();
     }
 
 }

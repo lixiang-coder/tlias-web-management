@@ -51,4 +51,12 @@ public interface EmpMapper {
      */
     @Select("select * from tlias.emp where id = #{id}")
     Emp getById(Integer id);
+
+
+    /**
+     * 修改员工信息
+     *
+     * @param emp
+     */
+    void update(Emp emp);
 }
