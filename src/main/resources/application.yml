@@ -40,3 +40,9 @@ knife4j:
         api-rule-resources:
           - com.itheima.controller
 
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    accessKeyId: xxx
+    accessKeySecret: xxx
+    bucketName: xzy-web-tlias
