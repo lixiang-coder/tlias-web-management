@@ -17,7 +17,8 @@ import java.io.IOException;
 @Api(tags = "文件上传相关接口")
 public class UploadController {
 
-    /*@PostMapping("/upload")
+    /*
+    @PostMapping("/upload")
     @ApiOperation("文件上传本地存储")
     public Result upload(String username, Integer age, MultipartFile image) throws IOException {
         log.info("文件上传：{},{},{}", username, age, image);
