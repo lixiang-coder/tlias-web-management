@@ -24,7 +24,8 @@ public class LoginController {
     private EmpService empService;
 
 
-    /*@PostMapping("/login")
+    /*
+    @PostMapping("/login")
     @ApiOperation("员工登录")
     public Result login(@RequestBody Emp emp) {
         log.info("员工登录，emp:{}", emp);
@@ -40,6 +41,7 @@ public class LoginController {
      * @return
      */
     @PostMapping("/login")
+    @ApiOperation("员工登录")
     public Result login(@RequestBody Emp emp) {
         //调用业务层：登录功能
         Emp loginEmp = empService.login(emp);
