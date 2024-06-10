@@ -19,8 +19,8 @@ public class AliOssTest {
         String accessKeyId = "youraccessKeyId";
         String accessKeySecret = "youraccessKeySecret";
 
-        // 填写Bucket名称，例如examplebucket。
-        String bucketName = "xzy-web-tlias";
+        // 填写Bucket名称，例如examplebucket
+        String bucketName = "examplebucket";
         // 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。
         String objectName = "1.jpg";
         // 填写本地文件的完整路径，例如D:\\localpath\\examplefile.txt。

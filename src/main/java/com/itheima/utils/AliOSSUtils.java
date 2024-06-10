@@ -16,7 +16,7 @@ public class AliOSSUtils {
     private String endpoint = "https://oss-cn-beijing.aliyuncs.com";
     private String accessKeyId = "youraccessKeyId";
     private String accessKeySecret = "youraccessKeySecret";
-    private String bucketName = "xzy-web-tlias";
+    private String bucketName = "examplebucket";
 
 
     /**
