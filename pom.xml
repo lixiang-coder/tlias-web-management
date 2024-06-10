@@ -30,6 +30,13 @@
             <version>2.2.2</version>
         </dependency>
 
+        <!-- JWT依赖-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
         <!--ConfigurationProperties依赖，可以使yml文件有提示-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
