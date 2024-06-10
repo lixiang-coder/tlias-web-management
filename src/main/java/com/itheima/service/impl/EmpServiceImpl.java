@@ -5,7 +5,6 @@ import com.github.pagehelper.PageHelper;
 import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean;
-import com.itheima.pojo.Result;
 import com.itheima.service.EmpService;
 import org.springframework.stereotype.Service;
 
@@ -106,5 +105,19 @@ public class EmpServiceImpl implements EmpService {
         //补全数据
         emp.setUpdateTime(LocalDateTime.now());
         empMapper.update(emp);
+    }
+
+
+    /**
+     * 员工登录
+     *
+     * @param emp
+     * @return
+     */
+    @Override
+    public Emp login(Emp emp) {
+        // 调用dao层功能：查询该用户名对应的密码是否正确
+        Emp loginEmp = empMapper.getByUsernameAndPassword(emp);
+        return loginEmp;
     }
 }

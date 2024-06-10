@@ -59,4 +59,13 @@ public interface EmpMapper {
      * @param emp
      */
     void update(Emp emp);
+
+    /**
+     * 员工登录
+     *
+     * @param emp
+     * @return
+     */
+    @Select("select * from tlias.emp where username = #{username} and password = #{password};")
+    Emp getByUsernameAndPassword(Emp emp);
 }
