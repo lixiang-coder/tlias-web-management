@@ -64,11 +64,7 @@ public class DeptController {
     @PostMapping
     public Result add(@RequestBody Dept dept) {
         log.info("新增部门");
-        try {
-            deptService.add(dept);
-        } catch (Exception e) {
-            return Result.error("新增失败");
-        }
+        deptService.add(dept);
         return Result.success();
     }
 
