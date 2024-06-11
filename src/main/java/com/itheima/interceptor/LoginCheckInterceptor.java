@@ -1,38 +1,36 @@
-package com.itheima.filter;
+package com.itheima.interceptor;
 
 import com.alibaba.fastjson.JSONObject;
 import com.itheima.pojo.Result;
 import com.itheima.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
-
+/**
+ * 自定义拦截器
+ */
+@Component
 @Slf4j
-//@WebFilter(urlPatterns = "/*")  //拦截所有请求
-public class LoginCheckFilter implements Filter {
+public class LoginCheckInterceptor implements HandlerInterceptor {
+    //目标资源方法执行前执行。 返回true：放行    返回false：不放行
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
-        //前置：强制转换为http协议的请求对象、响应对象 （转换原因：要使用子类中特有方法）
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        System.out.println("preHandle .... ");
 
         //1.获取请求url
         String url = request.getRequestURL().toString();
         log.info("请求路径：{}", url);   //请求路径：http://localhost:8080/login
 
         //2.判断请求url中是否包含login，如果包含，说明是登录操作，放行
-        // http://localhost:8080/doc.html 这里也排除了knife4j的文档地址，避免过滤器拦截
-        if (url.contains("/login") || url.contains("8080/")) {
+        if (url.contains("/login")) {
             //放行请求
-            chain.doFilter(request, response);
-            //结束当前方法的执行
-            return;
+            return true;
         }
 
         //3.获取请求头中的令牌（token）
@@ -49,7 +47,7 @@ public class LoginCheckFilter implements Filter {
             response.setContentType("application/json;charset=utf-8");
             //响应
             response.getWriter().write(json);
-            return;
+            return false;
         }
 
         //5.解析token，如果解析失败，返回错误结果（未登录）
@@ -63,9 +61,21 @@ public class LoginCheckFilter implements Filter {
             response.setContentType("application/json;charset=utf-8");
             //响应
             response.getWriter().write(json);
-            return;
+            return false;
         }
         //6.放行
-        chain.doFilter(request, response);
+        return true;
+    }
+
+    //目标资源方法执行后执行
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        System.out.println("postHandle ... ");
+    }
+
+    //视图渲染完毕后执行，最后执行
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        System.out.println("afterCompletion .... ");
     }
 }
