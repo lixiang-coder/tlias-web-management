@@ -28,12 +28,14 @@ public interface EmpMapper {
     //@Select("select * from tlias.emp")
     List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);
 
+
     /**
      * 批量删除员工
      *
      * @param ids
      */
     void delete(List<Integer> ids);
+
 
     /**
      * 新增员工
@@ -43,6 +45,7 @@ public interface EmpMapper {
     @Insert("insert into tlias.emp (username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
             "values (#{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate}, #{deptId}, #{createTime}, #{updateTime})")
     void save(Emp emp);
+
 
     /**
      * 根据id查询员工
@@ -61,6 +64,7 @@ public interface EmpMapper {
      */
     void update(Emp emp);
 
+
     /**
      * 员工登录
      *
@@ -69,6 +73,7 @@ public interface EmpMapper {
      */
     @Select("select * from tlias.emp where username = #{username} and password = #{password};")
     Emp getByUsernameAndPassword(Emp emp);
+
 
     /**
      * 根据部门id删除部门下所有员工

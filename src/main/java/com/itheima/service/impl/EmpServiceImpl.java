@@ -2,6 +2,7 @@ package com.itheima.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.itheima.anno.Log;
 import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean;
@@ -18,7 +19,6 @@ public class EmpServiceImpl implements EmpService {
 
     @Resource
     private EmpMapper empMapper;
-
 
     /*@Override
     public PageBean page(Integer page, Integer pageSize) {
@@ -58,21 +58,25 @@ public class EmpServiceImpl implements EmpService {
         return pageBean;
     }
 
+
     /**
      * 批量删除员工
      *
      * @param ids
      */
+    @Log
     @Override
     public void delete(List<Integer> ids) {
         empMapper.delete(ids);
     }
+
 
     /**
      * 新增员工
      *
      * @param emp
      */
+    @Log
     @Override
     public void save(Emp emp) {
         //补全数据
@@ -94,12 +98,14 @@ public class EmpServiceImpl implements EmpService {
         return emp;
     }
 
+
     /**
      * 修改员工信息
      *
      * @param emp
      * @return
      */
+    @Log
     @Override
     public void update(Emp emp) {
         //补全数据
