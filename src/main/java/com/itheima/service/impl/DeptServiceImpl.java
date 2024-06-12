@@ -1,9 +1,13 @@
 package com.itheima.service.impl;
 
 import com.itheima.mapper.DeptMapper;
+import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Dept;
+import com.itheima.pojo.DeptLog;
+import com.itheima.service.DeptLogService;
 import com.itheima.service.DeptService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
@@ -13,6 +17,12 @@ import java.util.List;
 public class DeptServiceImpl implements DeptService {
     @Resource
     private DeptMapper deptMapper;
+
+    @Resource
+    private EmpMapper empMapper;
+
+    @Resource
+    private DeptLogService deptLogService;
 
     /**
      * 部门列表查询
@@ -31,8 +41,29 @@ public class DeptServiceImpl implements DeptService {
      * @return
      */
     @Override
-    public int deleteById(Integer id) {
-        return deptMapper.deleteById(id);
+    @Transactional(rollbackFor = Exception.class)  //当前方法添加了事务管理,并指定所有异常都执行事物的回滚操作
+    public void deleteById(Integer id) throws Exception {
+        try {
+            // 根据部门id删除部门
+            deptMapper.deleteById(id);
+
+            //模拟：异常发生（运行时异常）
+            //int i = 1 / 0;
+            if (true) {
+                // 编译时异常，默认事物不回滚，如果回滚要指定所有异常
+                throw new Exception("出现异常了~~~");
+            }
+
+            // 删除这个部门下所有员工的数据
+            empMapper.deldeleteByDeptId(id);
+        } finally {
+            //不论是否有异常，最终都要执行的代码：记录日志
+            DeptLog deptLog = new DeptLog();
+            deptLog.setCreateTime(LocalDateTime.now());
+            deptLog.setDescription("执行了解散部门的操作，此时解散的是" + id + "号部门");
+            //调用其他业务类中的方法
+            deptLogService.insert(deptLog);
+        }
     }
 
     /**

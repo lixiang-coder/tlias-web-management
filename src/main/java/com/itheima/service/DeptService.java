@@ -11,7 +11,7 @@ public interface DeptService {
 
     List<Dept> list();
 
-    int deleteById(Integer id);
+    void deleteById(Integer id) throws Exception;
 
     void add(Dept dept);
 

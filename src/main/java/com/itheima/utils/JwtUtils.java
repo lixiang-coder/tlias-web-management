@@ -20,9 +20,9 @@ public class JwtUtils {
      */
     public static String generateJwt(Map<String, Object> claims){
         String jwt = Jwts.builder()
-                .addClaims(claims)//自定义信息（有效载荷）
-                .signWith(SignatureAlgorithm.HS256, signKey)//签名算法（头部）
-                .setExpiration(new Date(System.currentTimeMillis() + expire))//过期时间
+                .addClaims(claims)  //自定义信息（有效载荷）
+                .signWith(SignatureAlgorithm.HS256, signKey)    //签名算法（头部）
+                .setExpiration(new Date(System.currentTimeMillis() + expire))   //过期时间
                 .compact();
         return jwt;
     }
@@ -34,8 +34,8 @@ public class JwtUtils {
      */
     public static Claims parseJWT(String jwt){
         Claims claims = Jwts.parser()
-                .setSigningKey(signKey)//指定签名密钥
-                .parseClaimsJws(jwt)//指定令牌Token
+                .setSigningKey(signKey)     //指定签名密钥
+                .parseClaimsJws(jwt)        //指定令牌Token
                 .getBody();
         return claims;
     }

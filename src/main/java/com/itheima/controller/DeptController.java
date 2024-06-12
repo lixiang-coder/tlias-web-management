@@ -45,13 +45,10 @@ public class DeptController {
      */
     @ApiOperation("根据id删除部门")
     @DeleteMapping("/{id}")
-    public Result deleteById(@PathVariable Integer id) {
+    public Result deleteById(@PathVariable Integer id) throws Exception {
         log.info("根据id删除部门");
-        int count = deptService.deleteById(id);
-        if (count > 0) {
-            return Result.success();
-        }
-        return Result.error("删除失败");
+        deptService.deleteById(id);
+        return Result.success();
     }
 
     /**
