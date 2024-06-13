@@ -23,13 +23,13 @@
     </properties>
 
     <dependencies>
-
         <!--lombok：父工程已经配置好lombok依赖-->
         <!--<dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
         </dependency>-->
+
     </dependencies>
 
 </project>
