@@ -4,9 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.itheima</groupId>
+    <!--父工程已经指定了groupId-->
+    <!--<groupId>com.itheima</groupId>-->
     <artifactId>tlias-utils</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!--指定父工程-->
+    <parent>
+        <groupId>com.itheima</groupId>
+        <artifactId>tlias-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../tlias-parent/pom.xml</relativePath>
+    </parent>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -51,12 +60,12 @@
             <version>2.7.5</version>
         </dependency>
 
-        <!--lombok-->
-        <dependency>
+        <!--lombok：父工程已经配置好lombok依赖-->
+        <!--<dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.24</version>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 </project>
