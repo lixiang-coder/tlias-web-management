@@ -16,6 +16,13 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <!--聚合其他模块-->
+    <modules>
+        <module>../tlias-pojo</module>
+        <module>../tlias-utils</module>
+        <module>../../tlias-web-management</module>
+    </modules>
+
     <!--自定义属性-->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
